@@ -1,0 +1,76 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #666666;
+}
+h1, h2 {
+
+}
+.page {
+    background-image: url("../images/background.png");
+    background-size: cover;
+    padding: 100px 0;
+}
+.cart-container {
+    box-shadow: 13px 23px 18px 4px rgba(0, 0, 0, 0.33), 0 2px 10px 0 #000000 !important;
+    line-height: 29em;
+    margin: 0 auto;
+    max-width: 700px;
+    position: relative;
+}
+.cart-header {
+    background-color: #333333;
+    margin-bottom: 100px;
+}
+.cart-footer {
+    background-color: #ffffff;
+
+}
+.cart-header .cart-title h2 {
+    color: #ffffff;
+}
+.cart-footer .cart-title h2 {
+    color: #333333;
+}
+.cart-title {
+    position: absolute;
+}
+.cart-header .cart-title {
+    left: 90px;
+    top: 43%;
+}
+.cart-title h1 {
+    font-size: 27px;
+}
+.cart-title h2 {
+    font-size: 14px;
+}
+.cart-title h1, .cart-title h2{
+    color: #2e93ff;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.cart-footer .cart-title {
+    left: 65px;
+    top: 85px;
+}
+.cart-content .img-contact {
+    position: relative;
+    top: 125px;
+}
+.cart-content .img-bracode {
+    bottom: 129px;
+    position: absolute;
+    right: 45px;
+}
+.contact-title {
+    position: absolute;
+    top: 0;
+    width: 0;
+}
