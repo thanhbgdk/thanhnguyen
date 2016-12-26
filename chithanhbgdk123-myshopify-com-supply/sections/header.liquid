@@ -1,0 +1,160 @@
+<header class="site-header" role="banner">
+  
+  <div class="topbar">
+    <div class="row">
+        <div class="topbar-left col-md-6">
+            <ul class="top-navigation">
+                <li class="currency-switcher">
+                    <a href="#">USD</a>
+                    <ul class="navigation-submenu currency-switcher-content">
+                        <li class="active"><a href="#" data-currency="USD" title="USA dollar"><span></span>USD</a></li>
+                        <li class=""><a href="#" data-currency="EUR" title="Europian Euro"><span></span>EUR</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="topbar-right col-sm-6">
+          <ul class="top-navigation list-inline">
+              <li class="header-wc-myaccount">
+                  <a href="#">Login</a>
+              </li>
+              <li class="shopping-bag shopping-bag-wishlist">
+                  <a href="#" class="wishlist-contents" title="View your wishlist">wishlist<span class="amount">0</span></a>
+                  <div class="navigation-submenu shopping-bag-content woocommerce widget_shopping_cart">
+                      <p class="cart-desc empty">Your wishlist is empty.</p>
+                  </div>
+              </li>
+              <li class="shopping-bag shopping-bag-cart">
+                  <a href="#" class="cart-contents" title="View your shopping cart">
+                      <span>My cart</span>
+                      <span class="amount">0</span>
+                  </a>
+                  <div class="navigation-submenu shopping-bag-content woocommerce widget_shopping_cart">
+                      <div class="widget woocommerce widget_shopping_cart">
+                          <div class="widget_shopping_cart_content">
+                              <p class="cart-desc empty">No products in the cart.</p>
+                              <ul class="cart_list product_list_widget ">
+                              </ul><!-- end product list -->
+                          </div>
+                      </div>
+                  </div><!-- .shopping-bag-content -->
+              </li>
+          </ul>
+		</div>
+    </div>
+   </div>
+  
+  
+  <div class="wrapper navbar-container-inner">
+    <!-- logo
+	  ============================================= -->
+    <div class="grid--full">
+      <div class="grid-item large--one-half">
+        {% if template == 'index' %}
+          <h1 class="header-logo" itemscope itemtype="http://schema.org/Organization">
+        {% else %}
+          <div class="h1 header-logo" itemscope itemtype="http://schema.org/Organization">
+        {% endif %}
+          {% if section.settings.logo %}
+          {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
+            <a href="/" itemprop="url">
+              <img src="{{ section.settings.logo | img_url: image_size }}"
+                   srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                   alt="{{ section.settings.logo.alt | default: shop.name }}"
+                   itemprop="logo">
+            </a>
+          {% else %}
+            <a href="/" itemprop="url">{{ shop.name }}</a>
+          {% endif %}
+        {% if template == 'index' %}
+          </h1>
+        {% else %}
+          </div>
+        {% endif %}
+      </div>  
+      <!-- .header-menu end -->
+      
+      <div class"header-menu">
+     
+  <nav class="nav-bar" role="navigation">
+        <div class="wrapper">
+          {% include 'site-nav' %}
+        </div>
+      </nav>
+      </div>
+      
+     
+      
+      <!-- search-top
+	  ============================================= -->
+      <div class="grid-item large--one-half text-center large--text-right search-action">
+        {% if section.settings.header_message != blank or shop.customer_accounts_enabled %}
+          <br class="medium-down--hide">
+        {% endif %}       
+        <button type="button" class="search-item" data-toggle="modal" data-target="#myModal">
+          <span class="icon icon-search" aria-hidden="true"></span>
+        </button>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>    
+                {% include 'search-bar' %}
+              </div>      
+            </div>
+          </div>
+        </div>   
+      </div>
+      <!-- search-top end -->
+      
+    </div>
+
+  </div>
+</header>
+
+
+<div id="mobileNavBar">
+  <div class="display-table-cell">
+    <a class="menu-toggle mobileNavBar-link"><span class="icon icon-hamburger"></span>{{ 'layout.navigation.mobile_menu' | t }}</a>
+  </div>
+  <div class="display-table-cell">
+    <a href="/cart" class="cart-toggle mobileNavBar-link">
+      <span class="icon icon-cart"></span>
+      {{ 'layout.cart.cart' | t }} <span class="cart-count {% if cart.item_count == 0 %}hidden-count{% endif %}">{{ cart.item_count }}</span>
+    </a>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Header",
+    "class": "header-section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Custom logo",
+        "info": "400px wide .png recommended"
+      },
+      {
+        "type": "text",
+        "id": "logo_max_width",
+        "label": "Custom logo width",
+        "default": "305"
+      },
+      {
+        "type": "header",
+        "content": "Message"
+      },
+      {
+        "type": "richtext",
+        "id": "header_message",
+        "label": "Text",
+        "info": "55 characters max"
+      }
+    ]
+  }
+{% endschema %}

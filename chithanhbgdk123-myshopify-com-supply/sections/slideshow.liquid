@@ -1,0 +1,96 @@
+<hr>
+{% comment %} {% assign hero_enabled = true %}{% endcomment %}
+<div class="flexslider" id="heroSlider--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="slideshow-section" data-slider-home-auto="{{ section.settings.slider_home_auto }}" data-slider-home-rate="{{ section.settings.slider_home_rate }}">
+  <ul class="slides">
+    {% for block in section.blocks %}
+        <li id="slide--{{ block.id }}" data-flexslider-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+        {% if block.settings.slide != blank %}
+          {% if block.settings.link != "" %}
+          <a href="{{ block.settings.link }}" class="slide-link">
+          {% endif %}
+            <img src="{{ block.settings.slide | img_url: '1024x' }}"
+            srcset="{{ block.settings.slide | img_url: '1024x' }} 1x, {{ block.settings.slide | img_url: '1024x', scale: 2 }} 2x" alt="{{ block.settings.slide.alt }}">
+          {% if block.settings.link != "" %}
+          </a>
+          {% endif %}
+
+          {% else %}
+                {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                {% capture svg_tag_class %}placeholder-noblocks slide-link slide-link--{{ block.id }}{% endcapture %}
+                {%- assign placeholder = 'placeholder-lifestyle-' | append: current -%}
+                {{ 'lifestyle-' | append: current | placeholder_svg_tag: svg_tag_class }}
+          {% endif %}
+        </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+  {
+    "name": "Slideshow",
+    "class": "slider-section",
+    "max_blocks": 6,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "slider_home_auto",
+        "label": "Auto-rotate slides"
+      },
+      {
+        "type": "select",
+        "id": "slider_home_rate",
+        "label": "Transition time",
+        "options": [
+          {
+            "value": "5000",
+            "label": "5 seconds"
+          },
+          {
+            "value": "7000",
+            "label": "7 seconds"
+          },
+          {
+            "value": "10000",
+            "label": "10 seconds"
+          },
+          {
+            "value": "15000",
+            "label": "15 seconds"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Slideshow",
+        "category": "Image",
+        "blocks":[
+          {
+          "type": "image",
+          "type": "image",
+          "type": "image"
+         }
+        ]
+      }
+    ],
+    "blocks" : [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "slide",
+            "label": "Image",
+            "info":"1400 x 500px recommended"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link URL"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
