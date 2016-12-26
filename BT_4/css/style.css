@@ -5,5 +5,100 @@
 body{
     font-family: 'Raleway', sans-serif;
     font-size: 14px;
-    color: #666666;
+    color: #727272;
+}
+.top-bar {
+    position: relative;
+    border-bottom: 1px solid #e1e4d9;
+}
+.top-bar .header-left a {
+    display: inline-block;
+    padding-right: 10px;
+}
+.top-bar a {
+    color: #727272;
+    font-size: 13px;
+}
+.my-wishlist {
+    float: left;
+    padding-top: 6px;
+}
+.header-cart .my-wishlist i {
+    margin: 0 13px;
+}
+.header-cart .shopping-cart > span {
+    color: #70543f;
+    font-size: 20px;
+    font-weight: bold;
+    left: 4px;
+    line-height: 1;
+    position: relative;
+    top: 5px;
+}
+.top-bar .header-left, .top-bar .header-cart {
+    line-height: 8em;
+}
+/*  header-menu */
+.main-nav {
+    border-bottom: 3px solid #e1e4d9;
+    line-height: 7em;
+}
+.header-menu .nav-menu {
+    margin-bottom: 0;
+}
+.header-menu .nav-menu li {
+    padding: 0 20px;
+}
+.header-menu .nav-menu a {
+    color: #4b4b4b;
+    display: block;
+    font-weight: 800;
+}
+.header-serch .search-bar {
+    position: relative;
+}
+.search-bar a {
+    color: #c2c2c2;
+    font-size: 17px;
+    left: 14px;
+    position: absolute;
+    top: 1px;
+}
+.header-serch .search-bar input {
+    border: 1px solid #d7d7d7;
+    border-radius: 30px;
+    color: #a8a8a8;
+    font-size: 13px;
+    height: 35px;
+    padding-left: 40px;
+    width: 215px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.products-1 .text-center, .products-2 .text-center {
+    border-right: 1px solid #e9e9e9;
+}
+.products-1 {
+    margin-bottom: 30px;
 }
