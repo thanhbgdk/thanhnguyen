@@ -1,0 +1,91 @@
+body {
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    padding-left: 0;
+    margin: 0;
+}
+ul li {
+    list-style: none;
+}
+.list-inline li {
+    display: inline-block;
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 1000px;
+}
+.text-center {
+    text-align: center;
+}
+.header-top .top .logo img {
+    width: 1000px;
+}
+.header-menu {
+    background-color: #595959;
+}
+.list-inline li a {
+    color: #e3e3e3;
+    font-size: 18px;
+    line-height: 4;
+    padding: 0 10px;
+}
+.list ul {
+    padding-left: 30px;
+}
+.page {
+    background-color: #000000;
+}
+.contents .container {
+    background-color: #ffffff;
+    border-top: 13px solid #969696;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.block-1 .list-inline > li {
+    margin: 0 45px;
+    padding: 0 15px;
+}
+.block-1 .list-inline > li:first-child, .block-2 .list-inline > li:first-child, .block-3 .list-inline > li:first-child   {
+    margin-left: 0;
+}
+.block-1 .list-inline > li:last-child, .block-2 .list-inline > li:last-child, .block-3 .list-inline > li:last-child {
+    margin-right: 0;
+}
+.block-2 .list-inline > li {
+    margin: 0 10px;
+}
+.block-3 .list-inline > li {
+    margin: 0 31px;
+    padding: 0 10px;
+}
+.footer .logo img {
+    height: 45px;
+    width: 200px;
+}
+.footer {
+    background-color: #969696;
+    padding: 20px 0;
+}
+.copyright {
+    color: #ffffff;
+}
+.footer .list-inline a {
+    border-right: 1px solid;
+}
+.footer .list-inline li:last-child a {
+    border-right: 0;
+}
+.header-menu .main-menu .list-inline {
+  margin-left: 26px;
+}
+.header-top .logo {
+  margin-bottom: 10px;
+}

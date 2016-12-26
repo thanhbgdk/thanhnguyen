@@ -1,0 +1,137 @@
+body {
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+a:hover, a:focus {
+    text-decoration: none;
+}
+ul {
+    padding-left: 0;
+    margin: 0;
+}
+ul li {
+    list-style: none;
+}
+header {
+    position: relative;
+}
+.heading {
+    color: #68431b;
+    font-weight: bold;
+    font-style: italic;
+}
+.page {
+    background-color: #5b4a02;
+}
+.header-top .top, .header-menu {
+    background-color: #7f6000;
+    position: relative;
+}
+.footer {
+    background-color: #5a3200;
+    padding: 30px 0;
+}
+.header-top .top .logo {
+    line-height: 4;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.header-top .top .logo a {
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0.075em;
+}
+.header-menu .main-menu .list-inline {
+    padding: 40px 0 15px 30px;
+}
+.header-menu .main-menu .list-inline a {
+    color: #ffffff;
+    font-size: 20px;
+    font-style: oblique;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.contents .container {
+    background-color: #ffffff;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    padding: 33px;
+}
+.contents .block-content .block-square span {
+    background-color: #7f6000;
+}
+.contents .block {
+    border-bottom: 2px dashed;
+    padding-bottom: 30px;
+}
+.block.block-1 {
+    text-align: center;
+}
+.contents .block-1 h1 {
+    margin-bottom: 80px;
+    margin-top: 26px;
+}
+.contents .block-1 .block-square span {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 121px;
+}
+.contents .block-2 .block-square span {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 47px;
+}
+.contents .block-3 .block-square span {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 78px;
+}
+.contents .block-content .block-square span a {
+    color: #ffffff;
+    font-size: 25px;
+}
+.block-2 .col-md-2 {
+    width: 19.667%;
+}
+.block-2 .block-content {
+    left: 16px;
+    position: relative;
+}
+.block-3 .block-content {
+    margin-top: 24px;
+}
+.block.block-3 {
+    margin-bottom: 100px;
+}
+.footer .logo {
+    margin-bottom: 20px;
+}
+.footer .logo > a {
+    background-color: #7f6000;
+    color: #ffffff;
+    display: block;
+    font-size: 20px;
+    letter-spacing: 2px;
+    line-height: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 222px;
+}
+.footer .list-inline a {
+    border-right: 1px solid;
+    color: #ffffff;
+    padding-right: 16px;
+}
+.footer .list-inline li:last-child a {
+    border-right: 0;
+}
+.copyright {
+    color: #ffffff;
+}
