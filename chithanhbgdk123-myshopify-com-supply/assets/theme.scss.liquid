@@ -2892,7 +2892,13 @@ $shareBorderColor: #ececec;
 /*============================================================================
   #Site Header
 ==============================================================================*/
-
+.site-header .row{
+  margin-left: 0;
+  margin-right: 0;
+}
+a:hover, a:focus {
+  text-decoration: none !important;
+}
 /* topbar header */
 .topbar {
   border-bottom: 1px solid #ebebeb;
@@ -2913,6 +2919,12 @@ $shareBorderColor: #ececec;
   display: inline-block;
   float: left;
   position: relative;
+}
+.top-navigation .header-wc-myaccount {
+  border-left: 1px solid #ebebeb;
+}
+.topbar-right .top-navigation > li:last-child {
+  border-right: 0;
 }
 .top-navigation > li > a {
   color: #999999;
@@ -2950,6 +2962,9 @@ $shareBorderColor: #ececec;
   color: #999999;
   display: block;
   padding: 5px 35px 5px 20px;
+}
+.topbar .topbar-right {
+  padding-righ: 0;
 }
 .topbar .topbar-right .top-navigation {
   float: right;
@@ -3007,16 +3022,59 @@ $shareBorderColor: #ececec;
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
   letter-spacing: 0.075em;
 }
+.navbar-container-content {
+  padding: 35px 40px;
+}
+.navbar-container-inner .branding {
+  float: left;
+  width: 20%;
+}
+.navbar-container-inner .main-nav {
+  float: left;
+  position: relative;
+  width: 80%;
+}
+.navbar-container-inner .main-nav .search-item {
+  position: absolute;
+  right: 0;
+  top: 13px;
+}
+.navbar-container-inner .main-nav .nav-bar {
+  background: none;
+}
+.navbar-container-inner .main-nav li a {
+  color: #999999;
+}
+.navbar-container-inner .main-nav li a span{
+  display: none;
+}
+.main-nav .site-nav--has-dropdown .site-nav--dropdown {
+  background-color: #ffffff !important;
+  transform: translate(0px, 21px);
+  width: 900px;
+  z-index: 10;
+}
+.site-nav--dropdown > li {
+  width: 33.333%;
+  display: inline-block;
+  float: left;
+}
+.site-nav--active .site-nav--dropdown {
+  max-width: 300px;
+}
+.amount {
+  background: #f6f6f6 none repeat scroll 0 0;
+  color: #000000;
+  font-size: 14px;
+  margin-left: 13px;
+  padding: 3px 12px;
+}
+/* slider */
+.main-slideshow {
+  padding: 0;
+}
 
-
-
-
-
-
-
-
-
-
+/* header-menu */
 
 
 
@@ -3428,7 +3486,7 @@ $shareBorderColor: #ececec;
     overflow: hidden;
     visibility: hidden;
     z-index: 20;
-    @include transition(all 150ms);
+    @include transition(all 0.3s);
 
     .no-touch .site-nav--has-dropdown:hover &,
     .site-nav--has-dropdown.nav-hover &,
@@ -3437,13 +3495,14 @@ $shareBorderColor: #ececec;
       opacity: 1;
       box-shadow: 0 5px 40px rgba(0,0,0,0.05);
       visibility: visible;
-      @include transition(all 90ms);
+      transform: translate(0px, 0px);
+      @include transition(all 0.3s);
     }
 
     a {
       color: $colorPrimary;
       text-transform: none;
-      padding: $gutter/3 $gutter*1.5 $gutter/3 $gutter/2;
+      padding: 20px 46px 20px 15px;
 
       &:hover,
       &:active,
@@ -4303,15 +4362,17 @@ html[xmlns] .slides { display: block; }
 
 .flex-direction-nav { *height: 0; }
 .flex-direction-nav a  {
+  background-position: 50% center !important;
   display: block;
   width: 45px;
+  height: 45px;
   position: absolute;
-  top: 0;
+  top: 50%;
   bottom: 0;
   z-index: 10;
   overflow: hidden;
-  opacity: 0;
   cursor: pointer;
+  
   @include transition(all .3s ease);
 }
 
@@ -4324,9 +4385,9 @@ html[xmlns] .slides { display: block; }
 .flex-direction-nav a {
   text-indent: -9999px;
   background: {
-    color: transparent;
+    color: #999999;
     repeat: no-repeat;
-    size: 20px auto;
+    size: 10px auto;
   }
 
   /*================ Hide SVG arrows in oldIE ================*/
@@ -4410,15 +4471,13 @@ html[xmlns] .slides { display: block; }
 @include at-query ($min, $large) {
   .flex-direction-nav .flex-prev { left: 10px; }
   .flex-direction-nav .flex-next { right: 10px; }
-  .flexslider:hover .flex-prev { opacity: 1; left: (-$gutter)+5; }
-  .flexslider:hover .flex-next { opacity: 1; right: (-$gutter)+5; }
+  
 }
 
 @include at-query ($min, $maxWidthBp) {
   .flex-direction-nav .flex-prev { left: 20px; }
   .flex-direction-nav .flex-next { right: 20px; }
-  .flexslider:hover .flex-prev { opacity: 1; left: -45px; }
-  .flexslider:hover .flex-next { opacity: 1; right: -45px; }
+  
 }
 
 /*================ Custom Flexslider Styles ================*/

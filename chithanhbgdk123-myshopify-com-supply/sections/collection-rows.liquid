@@ -21,7 +21,8 @@
   {% include 'featured-row' with row_limit %}
   <!-- feature-row -->
 {% else %}
-  <div class="section-header">
+  <div class="container">
+    <div class="section-header">
     <p class="h1">{{ 'homepage.featured_collection_rows.heading' | t }}</p>
     <div class="section-header--right">
       <a href="{{ collections[featured_row].url }}">{{ 'homepage.featured_collection_rows.more' | t }} &rsaquo;</a>
@@ -40,6 +41,7 @@
         {% endfor %}
       </div>
     </div>
+  </div>
   </div>
 {% endif %}
 

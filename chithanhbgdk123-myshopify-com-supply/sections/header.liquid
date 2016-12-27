@@ -45,11 +45,11 @@
    </div>
   
   
-  <div class="wrapper navbar-container-inner">
+  <div class="navbar-container-content wrapper navbar-container-inner">
     <!-- logo
 	  ============================================= -->
-    <div class="grid--full">
-      <div class="grid-item large--one-half">
+    <div class="navbar-container-inner clearfix">
+      <div class="branding">
         {% if template == 'index' %}
           <h1 class="header-logo" itemscope itemtype="http://schema.org/Organization">
         {% else %}
@@ -72,25 +72,25 @@
           </div>
         {% endif %}
       </div>  
-      <!-- .header-menu end -->
+      <!-- .logo end --> 
       
-      <div class"header-menu">
-     
-  <nav class="nav-bar" role="navigation">
-        <div class="wrapper">
-          {% include 'site-nav' %}
+      <div class="main-nav text-center large--text-right search-action">
+        <!-- header-menu
+        ============================================= -->
+        <div class="container header-menu">
+          <nav class="main-nav-outer nav-bar" role="navigation">
+            <div class="wrapper">
+              {% include 'site-nav' %}
+            </div>
+          </nav>
         </div>
-      </nav>
-      </div>
+         <!-- .header-menu end --> 
       
-     
-      
-      <!-- search-top
-	  ============================================= -->
-      <div class="grid-item large--one-half text-center large--text-right search-action">
         {% if section.settings.header_message != blank or shop.customer_accounts_enabled %}
           <br class="medium-down--hide">
-        {% endif %}       
+        {% endif %}     
+        <!-- search-top
+	  	============================================= -->
         <button type="button" class="search-item" data-toggle="modal" data-target="#myModal">
           <span class="icon icon-search" aria-hidden="true"></span>
         </button>
@@ -106,7 +106,6 @@
         </div>   
       </div>
       <!-- search-top end -->
-      
     </div>
 
   </div>

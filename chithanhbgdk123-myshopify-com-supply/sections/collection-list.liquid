@@ -1,11 +1,12 @@
 <hr>
-<div class="section-header">
-  <h2 class="h1 section-header--left">{{ 'homepage.featured_collections.heading' | t }}</h2>
-  <div class="section-header--right">
-    <a href="/collections">{{ 'homepage.featured_collections.more_categories' | t }} &rsaquo;</a>
+<div class="container">
+  <div class="section-header">
+    <h2 class="h1 section-header--left">{{ 'homepage.featured_collections.heading' | t }}</h2>
+    <div class="section-header--right">
+      <a href="/collections">{{ 'homepage.featured_collections.more_categories' | t }} &rsaquo;</a>
+    </div>
   </div>
-</div>
-<div class="grid-uniform text-center">
+  <div class="grid-uniform text-center">
 
   {% assign index = 0 %}
   {% assign index = section.blocks.size %}
@@ -68,6 +69,8 @@
     </div>
   {% endif %}
 </div>
+</div>
+
 
 {% schema %}
   {
