@@ -73,32 +73,123 @@ body{
     padding-left: 40px;
     width: 215px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.slider-full-width {
+    border-bottom: 3px solid #ffbb00;
+    padding: 100px 0;
+    position: relative;
+}
+.slider-full-width .container {
+    padding-left: 55px;
+}
+.slider-full-width .slider-title > h1 {
+    color: #70543f;
+    font-size: 99px;
+    margin-bottom: 0;
+}
+.slider-full-width .slider-title h2 {
+    color: #70543f;
+    font-size: 42px;
+    font-weight: 300;
+    margin-top: 0;
+}
+.slider-full-width .slider-title > span {
+    color: #70543f;
+    display: block;
+    font-size: 24px;
+    margin-bottom: 22px;
+    margin-top: 38px;
+    width: 363px;
+}
+.slider-full-width .slider-title p {
+    color: #ffbb00;
+    font-size: 21px;
+}
+.slider-full-width button {
+    background: #ffbb00 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 800;
+    margin-top: 20px;
+    padding: 15px 41px;
+    text-transform: uppercase;
+}
+.slider-arrows {
+    display: block;
+    padding: 0 298px;
+    position: absolute;
+    top: 245px;
+    width: 100%;
+}
+.slider-arrows-left {
+    float: left;
+}
+.slider-arrows-right {
+    float: right;
+}
+.contents-container .product-heading {
+    border-bottom: 4px solid #e3e8e4;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+.contents-container h3 {
+    color: #8d8d8d;
+    font-size: 23px;
+    font-weight: bold;
+}
+.heading > h3 {
+    color: #353535;
+}
+.heading > span {
+    color: #6e6e6e;
+    display: block;
+    font-size: 13px;
+}
+.price {
+    color: #70543f;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
 .products-1 .text-center, .products-2 .text-center {
     border-right: 1px solid #e9e9e9;
 }
+.products-1 .text-center:last-child, .products-2 .text-center:last-child {
+    border-right: 0;
+}
 .products-1 {
+    margin-bottom: 35px;
+}
+.woo_load_container {
+    left: 0;
     margin-bottom: 30px;
+    margin-top: 45px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+.woo_load_container::before {
+    background-color: #d4d4d4;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    z-index: 2;
+}
+.load_more_products {
+    background-color: #ffffff;
+    border: 1px solid #d4d4d4;
+    border-radius: 40px;
+    color: #70726a !important;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 18px;
+    padding: 17px 67px !important;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 2;
 }
