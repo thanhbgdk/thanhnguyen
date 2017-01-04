@@ -1,105 +1,107 @@
-<hr>
-<div class="container">
-  <div class="section-header">
-    <h2 class="h1 section-header--left">{{ 'homepage.featured_collections.heading' | t }}</h2>
-    <div class="section-header--right">
-      <a href="/collections">{{ 'homepage.featured_collections.more_categories' | t }} &rsaquo;</a>
+<div class="page-width">
+  {% if section.settings.title != blank %}
+    <div class="section-header text-center">
+      <h2>{{ section.settings.title | escape }}</h2>
     </div>
-  </div>
-  <div class="grid-uniform text-center">
+  {% endif %}
 
-  {% assign index = 0 %}
-  {% assign index = section.blocks.size %}
-
-  {% case index %}
-    {% when 1 %}
-      {% assign featured_collection_width = 'one-whole' %}
-      {% assign featured_collection_size = '1024x' %}
-    {% when 2 %}
-      {% assign featured_collection_width = 'one-half' %}
-      {% assign featured_collection_size = '540x' %}
-    {% when 3 %}
-      {% assign featured_collection_width = 'small--one-half one-third' %}
-      {% assign featured_collection_size = '345x' %}
-    {% when 4 %}
-      {% assign featured_collection_width = 'small--one-half one-quarter' %}
-      {% assign featured_collection_size = '250x' %}
-    {% when 5 %}
-      {% assign featured_collection_width = 'small--one-half medium--one-third large--one-fifth' %}
-      {% assign featured_collection_size = '195x' %}
-    {% when 6 %}
-      {% assign featured_collection_width = 'small--one-half medium--one-third large--one-sixth' %}
-      {% assign featured_collection_size = '195x' %}
+  {% case section.settings.grid %}
+    {% when '2' %}
+      {%- assign grid_item_width = 'medium-up--one-half' -%}
+      {%- assign image_size = '530x' -%}
+    {% when '3' %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+      {%- assign image_size = '350x' -%}
+    {% when '4' %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+      {%- assign image_size = '250x' -%}
+    {% when '5' %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+      {%- assign image_size = '225x' -%}
   {% endcase %}
 
-  {% if index > 0 %}
-    {% for block in section.blocks %}
-      {% assign featured = block.settings.collection %}
-      {% include 'featured-collection' %}
-    {% endfor %}
-  {% comment %}
-  {% else %}
-    {% assign index = 0 %}
-    {% for collection in collections limit:7 %}
-      {% unless index >= 6 %}
-        {% unless collection.handle == 'frontpage' %}
-          {% assign featured = collection.handle %}
-          {% include 'featured-collection' %}
-          {% assign index = index | plus: 1 %}
-        {% endunless %}
-      {% endunless %}
-    {% endfor %}
-    {% endcomment %}
-  {% endif %}
+  <div class="collection-grid">
+    <div class="grid grid--uniform">
+      {% for block in section.blocks limit: section.blocks.size %}
+        <div class="grid__item {{ grid_item_width }}" {{ block.shopify_attributes }}>
+          {%- assign collection = collections[block.settings.collection] -%}
+          {% include 'collection-grid-item', collection_image_size: image_size %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 
-  {% if index == 0 %}
-    <div class="grid-item text-center">
-      <p>{{ 'homepage.featured_collections.no_collections_html' | t }}</p>
-    </div>
-    <div class="grid-item">
-      <div class="grid-uniform">
-        {% for i in (1..6) %}
-          <div class="grid-item small--one-half medium--one-third large--one-sixth text-center">
-            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
-            <p><a href="/admin/collections">{{ 'homepage.featured_collections.example_collection' | t }}</a></p>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
+  {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
   {% endif %}
 </div>
-</div>
-
 
 {% schema %}
   {
-    "name": "Featured collections",
-    "class": "collection-list-section",
-    "max_blocks": 6,
-    "presets": [
+    "name": "Collection list",
+    "class": "index-section",
+    "max_blocks": 12,
+    "settings": [
       {
-        "name": "Featured collections",
-        "category": "Collections",
-        "blocks" : [
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "select",
+        "id": "grid",
+        "label": "Collections per row",
+        "default": "3",
+        "options": [
           {
-            "type": "collection"
+            "value": "2",
+            "label": "2"
           },
           {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "featured_collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
             "type": "collection"
           }
         ]
       }
     ],
-    "blocks" : [
+    "presets": [
       {
-        "type": "collection",
-        "name": "Collection",
-        "settings": [
+        "name": "Collection list",
+        "category": "Collection",
+        "settings": {
+          "grid": "3"
+        },
+        "blocks": [
           {
-            "id": "collection",
-            "type": "collection",
-            "label": "Collection"
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
           }
         ]
       }

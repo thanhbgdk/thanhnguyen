@@ -1,114 +1,115 @@
 <!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-touch no-js"> <!--<![endif]-->
+<!--[if IE 9]> <html class="ie9 no-js" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{ shop.locale }}"> <!--<![endif]-->
 <head>
-
-  <!-- Basic page needs ================================================== -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_button }}">
+  <link rel="canonical" href="{{ canonical_url }}">
 
-  {% if settings.favicon_enable %}
-  <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
+  {% if settings.favicon != blank %}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
   {% endif %}
 
-  <!-- Title and description ================================================== -->
-  <title>
-  {{ page_title }}{% if current_tags %}{% assign current_tags_joined = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: current_tags_joined }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
-  </title>
-
+  {% capture seo_title %}
+    {{ page_title }}
+    {% if current_tags %}
+      {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {% endif %}
+    {% if current_page != 1 %}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {% endif %}
+    {% unless page_title contains shop.name %}
+      &ndash; {{ shop.name }}
+    {% endunless %}
+  {% endcapture %}
+  <title>{{ seo_title }}</title>
 
   {% if page_description %}
     <meta name="description" content="{{ page_description | escape }}">
   {% endif %}
 
-  <!-- Product meta ================================================== -->
-  {% include 'open-graph-tags' %}
-  {% include 'twitter-card' %}
+  {% include 'social-meta-tags' %}
+  
+  {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
 
-  <!-- Helpers ================================================== -->
-  <link rel="canonical" href="{{ canonical_url }}">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <!-- CSS ================================================== -->
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
-  {{ 'bootstrap.css' | asset_url | stylesheet_tag }}
+  
+  
   {{ 'font-awesome.min.css' | asset_url | stylesheet_tag }}
+  
   {% include 'google-fonts' %}
 
-  <!-- Header hook for plugins ================================================== -->
-  {{ content_for_header }}
+  <script>
+    var theme = {
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }},
+        showMore: {{ 'general.filters.show_more' | t | json }},
+        showLess: {{ 'general.filters.show_less' | t | json }}
+      },
+      moneyFormat: {{ shop.money_format | json }}
+    }
 
-  {% include 'oldIE-js' %}
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+  </script>
 
-  {% comment %}
-    If you store has customers disabled, you can remove the following JS file
-  {% endcomment %}
+  <!--[if (lte IE 9) ]>{{ 'match-media.min.js' | asset_url | script_tag }}<![endif]-->
+
   {% if template contains 'customers' %}
-    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
-    {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
   {% endif %}
 
-  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
-
-
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'jquery.min.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  
   <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
-  <!--[if lte IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'vendor.js' | asset_url }}"></script><![endif]-->
   
   <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'bootstrap.min.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
- <!--[if lte IE 9]><script src="{{ 'bootstrap.min.js' | asset_url }}"></script><![endif]-->
 
   <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'theme.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
   <!--[if lte IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
 
-
+  {{ content_for_header }}
 </head>
 
-<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+<body class="template-{{ template | split: '.' | first }}">
+
+  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  <div id="SearchDrawer" class="search-bar drawer drawer--top">
+    <div class="search-bar__table">
+      <div class="search-bar__table-cell search-bar__form-wrapper">
+        <form class="search search-bar__form" action="/search" method="get" role="search">
+          <button class="search-bar__submit search__submit btn--link" type="submit">
+            {% include 'icon-search' %}
+            <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+          </button>
+          <input class="search__input search-bar__input" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}">
+        </form>
+      </div>
+      <div class="search-bar__table-cell text-right">
+        <button type="button" class="btn--link search-bar__close js-drawer-close">
+          {% include 'icon-close' %}
+          <span class="icon__fallback-text">{{ 'general.search.close' | t }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
 
   {% section 'header' %}
 
-  <main class="main-slideshow wrapper main-content" role="main">
+  <div class="page-container" id="PageContainer">
 
-    {{ content_for_layout }}
+    <main class="main-content" id="MainContent" role="main">
+      {{ content_for_layout }}
+    </main>
 
-  </main>
+    {% section 'footer' %}
 
-  {% section 'footer' %}
-
-  <script>
-  var moneyFormat = '{{ shop.money_format }}';
-  {% unless settings.show_dollar_symbol %}
-  var amountMatch = /\{\{\s*(\w+)\s*\}\}/;
-  var result = amountMatch.exec(moneyFormat);
-  var moneyFormat = result[0];
-  {% endunless %}
-  </script>
-
-{% if settings.ajax_cart_method != 'page' %}
-
-  {% include 'ajax-cart-template' %}
-
-  <script>
-  jQuery(function($) {
-    ajaxifyShopify.init({
-      method: '{{ settings.ajax_cart_method }}',
-      wrapperClass: 'wrapper',
-      formSelector: '#addToCartForm',
-      addToCartSelector: '#addToCart',
-      cartCountSelector: '.cart-count',
-      toggleCartButton: '.cart-toggle',
-      useCartTemplate: true,
-      btnClass: 'btn',
-      moneyFormat: moneyFormat,
-      disableAjaxCart: false,
-      enableQtySelectors: true
-    });
-  });
-  </script>
-{% endif %}
-
+  </div>
 </body>
 </html>

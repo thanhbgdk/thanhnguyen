@@ -1,8 +1,3 @@
-{% comment %}
-  Custom template for testing styles applied to RTE content.
-  Remove before deploying to production/publishing your theme.
-{% endcomment %}
-
 <style>
 /* Styleguide styles */
 .docs-title {
@@ -31,10 +26,15 @@
   <h4 class="docs-title">RTE headings</h4>
   <div class="rte">
     <h1>RTE heading one</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     <h2>RTE heading two</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     <h3>RTE heading three</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     <h4>RTE heading four</h4>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     <h5>RTE heading five</h5>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     <h6>RTE heading six</h6>
   </div>
 
@@ -44,6 +44,7 @@
 
   <h4 class="docs-title">Type styles</h4>
   <ul>
+    <li><a href="#">Link</a></li>
     <li><strong>Strong</strong></li>
     <li><em>Emphasis</em></li>
     <li><a href="#">Inline link</a></li>
@@ -52,14 +53,17 @@
   </ul>
 
   <h4 class="docs-title">Blockquotes</h4>
-  <blockquote>
-    <p>Eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
-    <cite>The author of the quote</cite>
-  </blockquote>
+  <div class="rte">
+    <blockquote>
+      <p>Eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
+      <cite>The author of the quote</cite>
+    </blockquote>
+  </div>
 
   <h4 class="docs-title">Lists</h4>
-  <table>
-    <tbody>
+  <div class="rte">
+    <table>
+      <tbody>
       <tr>
         <td width="40%">
           <h6><code>ul</code> (default)</h6>
@@ -88,6 +92,19 @@
       </tr>
       <tr>
         <td>
+          <h6>Inline list <code>ul</code></h6>
+          <code>.list--inline</code></td>
+        <td>
+          <ul class="list--inline">
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+            <li>Four</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <h6>Child lists (to match the RTE styles)</h6>
         </td>
         <td>
@@ -110,8 +127,9 @@
           </ul>
         </td>
       </tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 
   <hr>
 
@@ -128,42 +146,42 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="responsive-table-row">
+      <tr>
         <td data-label="Order">#1001</td>
         <td data-label="Date">December 22, 2015</td>
         <td data-label="Payment Status">Authorized</td>
         <td data-label="Fulfillment Status">Unfulfilled</td>
         <td data-label="Total">$43.03</td>
       </tr>
-      <tr class="responsive-table-row">
+      <tr>
         <td data-label="Order">#1002</td>
         <td data-label="Date">December 23, 2015</td>
         <td data-label="Payment Status">Authorized</td>
         <td data-label="Fulfillment Status">Unfulfilled</td>
         <td data-label="Total">$44.03</td>
       </tr>
-      <tr class="responsive-table-row">
+      <tr>
         <td data-label="Order">#1003</td>
         <td data-label="Date">December 24, 2015</td>
         <td data-label="Payment Status">Authorized</td>
         <td data-label="Fulfillment Status">Unfulfilled</td>
         <td data-label="Total">$45.03</td>
       </tr>
-      <tr class="responsive-table-row">
+      <tr>
         <td data-label="Order">#1004</td>
         <td data-label="Date">December 25, 2015</td>
         <td data-label="Payment Status">Authorized</td>
         <td data-label="Fulfillment Status">Unfulfilled</td>
         <td data-label="Total">$46.03</td>
       </tr>
-      <tr class="responsive-table-row">
+      <tr>
         <td data-label="Order">#1005</td>
         <td data-label="Date">December 26, 2015</td>
         <td data-label="Payment Status">Authorized</td>
         <td data-label="Fulfillment Status">Unfulfilled</td>
         <td data-label="Total">$47.03</td>
       </tr>
-      <tr class="responsive-table-row">
+      <tr>
         <td data-label="Order">#1006</td>
         <td data-label="Date">December 27, 2015</td>
         <td data-label="Payment Status">Authorized</td>
@@ -198,14 +216,14 @@
 
   <h4 class="docs-title">Invisible labels</h4>
 
-  <p>Add a class of <code>label-hidden</code> to a label to visually hide it, while keeping it accessible to screen readers. Use the <code>placeholder</code> attribute as your visible label.</p>
+  <p>Add a class of <code>label--hidden</code> to a label to visually hide it, while keeping it accessible to screen readers. Use the <code>placeholder</code> attribute as your visible label.</p>
   <p><small><strong>Note:</strong> The <code>placeholder</code> attribute only works in IE10+, so invisible labels are disabled in IE9 and below.</small></p>
 
-  <label for="testInvisibleLabel1" class="label-hidden">First Name</label>
+  <label for="testInvisibleLabel1" class="label--hidden">First Name</label>
   <input type="text" id="testInvisibleLabel1" name="testInvisibleLabel1" placeholder="First Name">
-  <label for="testInvisibleLabel2" class="label-hidden">Last Name</label>
+  <label for="testInvisibleLabel2" class="label--hidden">Last Name</label>
   <input type="text" id="testInvisibleLabel2" name="testInvisibleLabel2" placeholder="Last Name">
-  <label for="testInvisibleLabel3" class="label-hidden">Email</label>
+  <label for="testInvisibleLabel3" class="label--hidden">Email</label>
   <input type="text" id="testInvisibleLabel3" name="testInvisibleLabel3" placeholder="Email">
 
   <hr>
@@ -276,7 +294,7 @@
       background-color: lightgreen;
     }
 
-    .note--error {
+    .errors {
       border-color: red;
       background-color: lightred;
     }
@@ -289,7 +307,7 @@
     {% raw %}{% endif %}{% endraw %}
 
     {% raw %}{% if form.errors %}{% endraw %}
-      &lt;div class="note note--error"&gt;
+      &lt;div class="note errors"&gt;
         {% raw %}{{ form.errors | default_errors }}{% endraw %}
       &lt;/div&gt;
     {% raw %}{% endif %}{% endraw %}
@@ -297,7 +315,7 @@
 
   <div class="note">This is a standard note</div>
   <div class="note note--success">This is a success message</div>
-  <div class="note note--error">
+  <div class="note errors">
     <p>This is an error message.</p>
     <ul>
       <li>Bullets can offer more insight to the error</li>
@@ -345,7 +363,7 @@
   <p>Read more about using, creating, and editing SVG icons in Slate's documentation.</p>
 
   <h4 class="docs-title">Payment icons</h4>
-  <ul class="payment-icons">
+  <ul class="list--inline payment-icons">
     <li>{% include 'icon-amazon_payments' %}</li>
     <li>{% include 'icon-american_express' %}</li>
     <li>{% include 'icon-bitcoin' %}</li>
@@ -362,26 +380,25 @@
     <li>{% include 'icon-maestro' %}</li>
     <li>{% include 'icon-master' %}</li>
     <li>{% include 'icon-paypal' %}</li>
+    <li>{% include 'icon-stripe' %}</li>
     <li>{% include 'icon-visa' %}</li>
   </ul>
 
   <h4 class="docs-title">Social icons</h4>
-  <ul>
+  <ul class="list--inline">
     <li>{% include 'icon-facebook' %}</li>
-    <li>{% include 'icon-fancy' %}</li>
-    <li>{% include 'icon-google-plus' %}</li>
     <li>{% include 'icon-instagram' %}</li>
     <li>{% include 'icon-pinterest' %}</li>
-    <li>{% include 'icon-snapchat' %}</li>
     <li>{% include 'icon-tumblr' %}</li>
     <li>{% include 'icon-twitter' %}</li>
+    <li>{% include 'icon-snapchat' %}</li>
     <li>{% include 'icon-vimeo' %}</li>
     <li>{% include 'icon-youtube' %}</li>
   </ul>
 
   <h4 class="docs-title">General icons</h4>
-  <ul>
-    <li>{% include 'icon-arrow-down' %}</li>
+  <ul class="list--inline">
+    <ul class="list--inline">
     <li>{% include 'icon-cart' %}</li>
     <li>{% include 'icon-close' %}</li>
     <li>{% include 'icon-hamburger' %}</li>
@@ -389,5 +406,6 @@
     <li>{% include 'icon-plus' %}</li>
     <li>{% include 'icon-rss' %}</li>
     <li>{% include 'icon-search' %}</li>
+    </ul>
   </ul>
 </div>
